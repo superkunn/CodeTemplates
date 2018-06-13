@@ -18,19 +18,15 @@ void spfa(int s)
     while(!que.empty()) que.pop();
     que.push(s);
     inque[s]=true;
-    while(!que.empty())
-    {
+    while(!que.empty()){
         int u=que.front();
         inque[u]=false;
         que.pop();
-        for(int i=0;i<G[u].size();i++)
-        {
+        for(int i=0;i<G[u].size();i++){
             edge e=G[u][i];
-            if(d[u]+e.cost<d[e.to])
-            {
+            if(d[u]+e.cost<d[e.to]){
                 d[e.to]=d[u]+e.cost;
-                if(!inque[e.to])
-                {
+                if(!inque[e.to]){
                     inque[e.to]=true;
                     que.push(e.to);
                 }
