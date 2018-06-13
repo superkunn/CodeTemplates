@@ -11,14 +11,11 @@ void bellman_ford(int s)
 {
     for(int i=1;i<=V;i++) d[i]=INF;
     d[s]=0;
-    while(true)
-    {
+    while(true){
         bool update=false;
-        for(int i=1;i<=E;i++)
-        {
+        for(int i=1;i<=E;i++){
             edge e=es[i];
-            if(d[e.from]!=INF&&d[e.to]>d[e.from]+e.cost)
-            {
+            if(d[e.from]!=INF&&d[e.to]>d[e.from]+e.cost){
                 d[e.to]=d[e.from]+e.cost;
                 update=true;
             }
