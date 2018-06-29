@@ -89,7 +89,7 @@ int main(){
     return 0;
 }
 /*
-int:
+in:
 7
 0 1 10
 1 2 6
