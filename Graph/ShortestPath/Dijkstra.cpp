@@ -8,8 +8,7 @@ typedef pair<int,int> P;
 int V;
 vector<edge> G[MAXV];
 int d[MAXV];
-void dijkstra(int s)
-{
+void dijkstra(int s){
     priority_queue<P,vector<P>,greater<P> > que;
     fill(d,d+V,INF);
     d[s]=0;
@@ -27,7 +26,6 @@ void dijkstra(int s)
         }
     }
 }
-
 int main(){
     return 0;
 }
