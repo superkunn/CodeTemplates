@@ -9,10 +9,7 @@ int head[MAXV];
 int iter[MAXV];
 int level[MAXV];
 struct node{
-    int to;
-    int cap;
-    int rev;
-    int next;
+    int to,cap,rev,next;
 };
 node edge[2*MAXE];// two times!!!
 void add_edge(int a,int b,int c){
@@ -76,8 +73,8 @@ int max_flow(int s,int t){
 int main(){
     int n;
     cin>>n;
-    tot=0;
-    memset(head,-1,sizeof(head));
+    tot=0;//init
+    memset(head,-1,sizeof(head));//init
     for(int i=1;i<=n;i++){
         int a,b,c;
         cin>>a>>b>>c;
