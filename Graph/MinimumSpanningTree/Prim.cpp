@@ -5,8 +5,7 @@ const int MAXE=1e5+5;
 const int MAXV=3e5+5;
 typedef pair<int,int> P;
 int V,E;
-struct edge
-{
+struct edge{
 	int to,cost;
 };
 vector<edge> G[MAXV];// adjacency table
