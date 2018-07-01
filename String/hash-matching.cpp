@@ -18,7 +18,6 @@ bool contain(string a,string b){//a in b?
     }
     return false;
 }
-
 int main(){
     return 0;
 }
