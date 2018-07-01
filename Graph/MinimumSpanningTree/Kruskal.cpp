@@ -5,8 +5,7 @@ const int MAXE=1e5+5;
 const int INF=1e9;
 const int MAXN=1e5+5;
 struct edge{int u,v,cost;};
-bool cmp(const edge &e1,const edge &e2)
-{
+bool cmp(const edge &e1,const edge &e2){
     return e1.cost<e2.cost;
 }
 edge es[MAXE];
