@@ -10,8 +10,7 @@ vector<edge> G[MAXV];
 int d[MAXV];
 bool inque[MAXV];
 queue<int> que;
-void spfa(int s)
-{
+void spfa(int s){
     fill(d,d+V,INF);
     fill(inque,inque+V,false);
     d[s]=0;
@@ -34,7 +33,6 @@ void spfa(int s)
         }
     }
 }
-
 int main(){
     return 0;
 }
