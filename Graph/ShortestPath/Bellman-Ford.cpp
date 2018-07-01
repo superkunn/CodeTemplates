@@ -7,8 +7,7 @@ struct edge{int from,to,cost;};
 edge es[MAXE];
 int d[MAXV];
 int V,E;
-void bellman_ford(int s)
-{
+void bellman_ford(int s){
     for(int i=1;i<=V;i++) d[i]=INF;
     d[s]=0;
     while(true){
@@ -23,7 +22,6 @@ void bellman_ford(int s)
         if(!update) break;
     }
 }
-
 int main(){
     return 0;
 }
