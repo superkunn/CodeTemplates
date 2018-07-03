@@ -2,8 +2,8 @@
 using namespace std;
 const int MAXN=1e6+5;
 int p[MAXN],r[MAXN];
-void init(int n){
-    for(int i=1;i<=n;i++){
+void init(int x){
+    for(int i=0;i<=x;i++){
         p[i]=i;
         r[i]=0;
     }
