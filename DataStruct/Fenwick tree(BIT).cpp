@@ -13,26 +13,32 @@ bool cmp2(node x,node y){
     return x.id<y.id;
 }
 //*******begin*************
-int bit[MAXN],n;
-int sum(int i){
-    int s=0;
-    while(i>0){
-        s+=bit[i];
-        i-=i&-i;
+struct BIT{
+    int c[MAXN<<1],n;
+    void init(int _n){
+        n=_n;
+        for(int i=1;i<=n;i++)c[i]=0;
     }
-    return s;
-}
-void add(int i,int x){
-    while(i<=n){
-        bit[i]+=x;
-        i+=i&-i;
+    void add(int i,int x){
+        while(i<=n){
+            c[i]+=x;
+            i+=i&-i;
+        }
     }
-}
+    int sum(int i){
+        int s=0;
+        while(i>0){
+            s+=c[i];
+            i-=i&-i;
+        }
+        return s;
+    }
+}bit;
 //*********end************
 int main(){
     int N;
     scanf("%d",&N);
-    n=N;
+    bit.init(N);
     for(int i=1;i<=N;i++){
         scanf("%d",&no[i].v);
         no[i].id=i;
@@ -41,11 +47,11 @@ int main(){
     for(int i=1;i<=N;i++){
         no[i].v=i;
     }
-    sort(no+1,no+1+n,cmp2);
+    sort(no+1,no+1+N,cmp2);
     long long ans=0;
     for(int i=1;i<=N;i++){
-        ans+=i-1-sum(no[i].v);
-        add(no[i].v,1);
+        ans+=i-1-bit.sum(no[i].v);
+        bit.add(no[i].v,1);
     }
     printf("%lld",ans);
     return 0;
