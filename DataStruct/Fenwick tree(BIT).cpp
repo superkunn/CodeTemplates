@@ -1,18 +1,8 @@
 //sgu 180 Inversions
 #include <bits/stdc++.h>
 using namespace std;
-const int MAXN=100000;
-struct node{
-    int id;
-    int v;
-}no[MAXN];
-bool cmp(node x,node y){
-    return x.v<y.v;
-}
-bool cmp2(node x,node y){
-    return x.id<y.id;
-}
 //*******begin*************
+const int MAXN=100000;
 struct BIT{
     int c[MAXN<<1],n;
     void init(int _n){
@@ -35,6 +25,16 @@ struct BIT{
     }
 }bit;
 //*********end************
+struct node{
+    int id;
+    int v;
+}no[MAXN];
+bool cmp(node x,node y){
+    return x.v<y.v;
+}
+bool cmp2(node x,node y){
+    return x.id<y.id;
+}
 int main(){
     int N;
     scanf("%d",&N);
