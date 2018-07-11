@@ -62,6 +62,5 @@ int main(){
         return 0;
     }
     printf("%d",max(ans,d[n]));
-    
     return 0;
 }
