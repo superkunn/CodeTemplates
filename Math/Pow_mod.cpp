@@ -5,7 +5,7 @@ const int MOD=1e9+7;
 ll pow_mod(ll a,ll i){
     ll res=1;
     while(i>0){
-        if(i&1)ret=ret*a%MOD;
+        if(i&1)res=res*a%MOD;
         a=a*a%MOD;
         i>>=1;
     }
