@@ -14,7 +14,7 @@ int d[MAXV];
 int cnt[MAXV];
 bool inque[MAXV];
 queue<int> que;
-int spfa(int s){
+bool spfa(int s){
     fill(d,d+V+1,INF);
     fill(cnt,cnt+V+1,0);
     fill(inque,inque+V+1,false);
@@ -32,14 +32,14 @@ int spfa(int s){
             if(d[u]+e.cost<d[e.to]){
                 d[e.to]=d[u]+e.cost;
                 if(!inque[e.to]){
-                    if(++cnt[e.to]>V)return -1;
+                    if(++cnt[e.to]>V)return false;
                     inque[e.to]=true;
                     que.push(e.to);
                 }
             }
         }
     }
-    return d[V];
+    return true;
 }
 int main(){
     int a1,a2,a3;
@@ -58,7 +58,7 @@ int main(){
         scanf("%d%d%d",&x,&y,&z);
         G[y].push_back(edge{x,-z});
     }
-    int w=spfa(1);
-    printf("%d",w==INF?-2:w);
+   if(!spfa(1)){printf("-1");return 0;}
+    printf("%d",d[V]==INF?-2:d[V]);
     return 0;
 }
