@@ -7,6 +7,7 @@ struct DSU{
     int findp(int x){return x==p[x]?x:p[x]=findp(p[x]);}
     void unite(int x,int y){
         x=findp(x),y=findp(y);
+        if(x==y)return;
         if(r[x]<r[y])p[x]=y;
         else p[y]=x;
         if(r[x]==r[y])r[x]++;
