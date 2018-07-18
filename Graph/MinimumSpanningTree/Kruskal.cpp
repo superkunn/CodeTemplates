@@ -12,9 +12,7 @@ struct DSU{
     bool same(int x,int y){return findp(x)==findp(y);}
 }dsu;
 struct edge{int u,v,cost;}es[MAXE];
-bool cmp(const edge &x,const edge &y){
-    return x.cost<y.cost;
-}
+bool cmp(const edge &x,const edge &y){return x.cost<y.cost;}
 int V,E;
 int kruskal(){
     sort(es,es+E,cmp);
