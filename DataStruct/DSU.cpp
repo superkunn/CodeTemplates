@@ -3,7 +3,7 @@ using namespace std;
 const int MAXN=1e6+5;
 struct DSU{
     int p[MAXN],r[MAXN];
-    void init(int n){REP(i,0,n)p[i]=i,r[i]=0;}
+    void init(int n){for(int i=0;i<=n;i++)p[i]=i,r[i]=0;}
     int findp(int x){return x==p[x]?x:p[x]=findp(p[x]);}
     void unite(int x,int y){
         x=findp(x),y=findp(y);
