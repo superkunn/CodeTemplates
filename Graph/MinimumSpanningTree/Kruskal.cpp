@@ -19,10 +19,9 @@ int kruskal(){
     dsu.init(V);
     int res=0;
     for(int i=0;i<E;i++){
-        edge e=es[i];
-        if(!dsu.same(e.u,e.v)){
-            dsu.unite(e.u,e.v);
-            res+=e.cost;
+        if(!dsu.same(es[i].u,es[i].v)){
+            dsu.unite(es[i].u,es[i].v);
+            res+=es[i].cost;
         }
     }
     return res;
