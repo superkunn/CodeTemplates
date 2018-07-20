@@ -34,7 +34,7 @@ void rdfs(int v,int k){
 int scc(){
     memset(used,0,sizeof(used));
     vs.clear();
-    for(int v=1;v<=V;v++){//form 1 to V
+    for(int v=1;v<=V;v++){//from 1 to V
         if(!used[v]) dfs(v);
     }
     int k=0;
