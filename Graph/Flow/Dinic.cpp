@@ -1,9 +1,13 @@
-#include <bits/stdc++.h>
+#include<cstdio>
+#include<iostream>
+#include<vector>
+#include<queue>
+#include<cstring>
 using namespace std;
-typedef long long ll;
 const int MAXV=5000+5;
 const int MAXE=500000+5;
 const int INF=0x3f3f3f3f;
+namespace dinic{
 int tot;
 int head[MAXV];
 int iter[MAXV];
@@ -12,6 +16,10 @@ struct node{
     int to,cap,rev,next;
 };
 node edge[2*MAXE];// two times!!!
+void init(){
+    tot=0;
+    memset(head,-1,sizeof(head));
+}
 void add_edge(int a,int b,int c){
     edge[tot].to=b;
     edge[tot].cap=c;
@@ -70,19 +78,19 @@ int max_flow(int s,int t){
         }
     }
 }
+};
 int main(){
     int n;
     cin>>n;
-    tot=0;//init
-    memset(head,-1,sizeof(head));//init
+    dinic::init();
     for(int i=1;i<=n;i++){
         int a,b,c;
         cin>>a>>b>>c;
-        add_edge(a,b,c);
+        dinic::add_edge(a,b,c);
     }
     int x,y;
     cin>>x>>y;
-    cout<<max_flow(x,y)<<endl;
+    cout<<dinic::max_flow(x,y)<<endl;
     return 0;
 }
 /*
