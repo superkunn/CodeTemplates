@@ -4,25 +4,10 @@ using namespace std;
 //*******begin*************
 const int MAXN=100000;
 struct BIT{
-    int c[MAXN<<1],n;
-    void init(int _n){
-        n=_n;
-        for(int i=1;i<=n;i++)c[i]=0;
-    }
-    void add(int i,int x){
-        while(i<=n){
-            c[i]+=x;
-            i+=i&-i;
-        }
-    }
-    int sum(int i){
-        int s=0;
-        while(i>0){
-            s+=c[i];
-            i-=i&-i;
-        }
-        return s;
-    }
+    int n,c[MAXN<<1];
+    void init(int _n){n=_n;for(int i=0;i<=n;i++)c[i]=0;}
+    void add(int i,int v){for(;i<=n;i+=i&-i)c[i]+=v;}
+    int sum(int i){int s=0;for(;i>0;i-=i&-i)s+=c[i];return s;}
 }bit;
 //*********end************
 struct node{
