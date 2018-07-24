@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+//from 0 to n-1 !!!!!
 const int MAXN=1e6+5;
 int a[MAXN];
 int st[MAXN][32];
