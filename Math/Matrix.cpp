@@ -1,3 +1,4 @@
+//hdu 1005
 #include <cstdio>
 #include <algorithm>
 #include <iostream>
