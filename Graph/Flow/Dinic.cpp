@@ -65,9 +65,7 @@ int max_flow(int s,int t){
     while(1){
         bfs(s);
         if(level[t]<0)return flow;
-        for(int i=0;i<MAXV;i++){
-            iter[i]=head[i];
-        }
+        copy(head,head+MAXV-1,iter);
         int f;
         while((f=dfs(s,t,INF))>0){
             flow+=f;
