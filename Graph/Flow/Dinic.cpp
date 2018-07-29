@@ -1,10 +1,12 @@
+//poj 3281
 #include<cstdio>
 #include<iostream>
-#include<queue>
+#include<algorithm>
 #include<cstring>
+#include<queue>
 using namespace std;
-const int MAXV=5000+5;
-const int MAXE=500000+5;
+const int MAXV=400+5;
+const int MAXE=1e5+5;
 const int INF=0x3f3f3f3f;
 int tot;
 int head[MAXV],level[MAXV],iter[MAXV];
@@ -28,8 +30,8 @@ void add_edge(int u,int v,int c){
 }
 void bfs(int s){
     memset(level,-1,sizeof(level));
-    queue<int> que;
     level[s]=0;
+    queue<int> que;
     que.push(s);
     while(!que.empty()){
         int u=que.front();
@@ -48,11 +50,11 @@ int dfs(int u,int t,int f){
     if(u==t)return f;
     for(int &i=iter[u];i!=-1;i=edge[i].next){
         int v=edge[i].to;
-        int &c=edge[i].cap;
+        int c=edge[i].cap;
         if(c>0&&level[u]<level[v]){
             int d=dfs(v,t,min(f,c));
             if(d>0){
-                c-=d;
+                edge[i].cap-=d;
                 edge[i^1].cap+=d;
                 return d;
             }
@@ -65,38 +67,39 @@ int max_flow(int s,int t){
     while(1){
         bfs(s);
         if(level[t]<0)return flow;
-        copy(head,head+MAXV-1,iter);
         int f;
-        while((f=dfs(s,t,INF))>0){
+        copy(head,head+MAXV-1,iter);
+        while(f=dfs(s,t,INF)){
             flow+=f;
         }
     }
 }
 int main(){
-    int n;
-    cin>>n;
+    int n,f,d;
+    scanf("%d%d%d",&n,&f,&d);
+    int s=0,t=2*n+f+d;
     init();
-    for(int i=1;i<=n;i++){
-        int a,b,c;
-        cin>>a>>b>>c;
-        add_edge(a,b,c);
+    for(int i=1;i<=f;i++){
+        add_edge(s,2*n+i,1);
     }
-    int x,y;
-    cin>>x>>y;
-    cout<<max_flow(x,y)<<endl;
+    for(int i=1;i<=d;i++){
+        add_edge(2*n+f+i,t,1);
+    }
+    for(int i=1;i<=n;i++){
+        add_edge(i,n+i,1);
+        int ff,dd;
+        scanf("%d%d",&ff,&dd);
+        while(ff--){
+            int x;
+            scanf("%d",&x);
+            add_edge(2*n+x,i,1);
+        }
+        while(dd--){
+            int x;
+            scanf("%d",&x);
+            add_edge(n+i,2*n+f+x,1);
+        }
+    }
+    printf("%d",max_flow(s,t));
     return 0;
 }
-/*
-in:
-7
-0 1 10
-1 2 6
-0 2 2
-1 3 6
-3 8 8
-2 8 5
-3 2 3
-0 8
-out:
-11
-*/
